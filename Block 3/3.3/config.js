@@ -1,0 +1,25 @@
+export const config = {
+    port: 3000,
+    names: [
+        'Anna',
+        'Benjamin',
+        'Clara',
+        'David',
+        'Elena',
+        'Fabian',
+        'Greta',
+        'Hannes',
+        'Isabella',
+        'Jonas',
+        'Katharina',
+        'Leon',
+        'Mara',
+        'Niklas',
+        'Olivia',
+        'Paul',
+        'Quentin',
+        'Rosa',
+        'Sofia',
+        'Tim',
+    ]
+};

@@ -1,0 +1,28 @@
+<unicornKingdom>
+    <rainbow>
+        <color>GlitterPink</color>
+        <intensity>9001</intensity>
+        <visible>true</visible>
+    </rainbow>
+    <creatures>
+        <creature type="sparklegoat">
+            <name>Sir Lickahoof</name>
+            <powerLevel>42</powerLevel>
+            <diet>clouds</diet>
+        </creature>
+        <creature type="hornedPenguin">
+            <name>Pablo the Judger</name>
+            <powerLevel>1337</powerLevel>
+            <skills>
+                <skill>Judging Dance Battles</skill>
+                <skill>Eating Ice Cream Aggressively</skill>
+            </skills>
+        </creature>
+    </creatures>
+    <events>
+        <event name="Fluffpocalypse">
+            <date>2069-04-20</date>
+            <description>The day all fluff turned sentient and declared war on socks.</description>
+        </event>
+    </events>
+</unicornKingdom>
