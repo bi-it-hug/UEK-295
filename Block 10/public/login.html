@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form name="login">
+            <input type="email" name="email" placeholder="email" />
+            <input type="password" name="password" placeholder="password" />
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            const loginForm = document.forms.login;
+
+            async function login(e) {
+                e.preventDefault();
+
+                const result = await fetch("http://localhost:3000/login", {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Basic ${btoa(`${loginForm.email.value}:${loginForm.password.value}`)}`,
+                    },
+                });
+
+                if (result.ok) {
+                    const data = await result.json();
+                    localStorage.setItem("token", data.token);
+                    console.log("Login successful, token stored");
+                    window.location.href = "http://127.0.0.1:3030/public/index.html";
+                } else {
+                    console.error("Login failed:", result.statusText);
+                }
+            }
+
+            loginForm.addEventListener("submit", login);
+        </script>
+    </body>
+</html>

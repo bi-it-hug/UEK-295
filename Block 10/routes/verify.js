@@ -4,7 +4,7 @@ import express from 'express'
 const router = express.Router()
 
 router.get('/', verifyToken, (request, response) => {
-    response.json(request.session.token)
+    response.json(request.headers)
 })
 
 export default router

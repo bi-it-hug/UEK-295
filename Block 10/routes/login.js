@@ -15,7 +15,6 @@ router.post('/', validateLogin, async (request, response) => {
         if (password !== user.password) return response.status(401).json({ error: 'Invalid credentials' })
 
         const token = jwt.sign(user.toObject(), config.session.secret, { expiresIn: '24h' })
-        request.session.token = token
         response.json({ token })
 
     } catch (error) {

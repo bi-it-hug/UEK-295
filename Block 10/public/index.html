@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Logged In!</h1>
+        <button onclick="logout()">Logout</button>
+        <div id="userInfo"></div>
+
+        <script>
+            async function verify() {
+                const token = localStorage.getItem("token");
+
+                if (!token) {
+                    console.error("No token found");
+                    window.location.href = "http://127.0.0.1:3030/public/login.html";
+                    return;
+                }
+
+                const result = await fetch("http://localhost:3000/verify", {
+                    method: "GET",
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                if (result.ok) {
+                    const data = await result.json();
+                    console.log("Verification successful:", data);
+                    document.getElementById("userInfo").innerHTML = `<p>Welcome! You are authenticated.</p>`;
+                } else {
+                    console.error("Verification failed:", result.statusText);
+                    localStorage.removeItem("token");
+                    window.location.href = "http://127.0.0.1:3030/public/login.html";
+                }
+            }
+
+            function logout() {
+                localStorage.removeItem("token");
+                window.location.href = "http://127.0.0.1:3030/public/login.html";
+            }
+
+            window.addEventListener("DOMContentLoaded", verify);
+        </script>
+    </body>
+</html>
